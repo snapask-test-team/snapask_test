@@ -5,7 +5,7 @@ module V1
       expose :total_price
       expose :currency
       expose :pay_type
-      expose :pay_time
+      expose :pay_time, format_with: :iso8601
 
     end
   end
