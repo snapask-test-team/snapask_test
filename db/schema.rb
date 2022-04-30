@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_075442) do
+ActiveRecord::Schema.define(version: 2022_04_30_100817) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "subject"
+    t.decimal "price", precision: 8, scale: 2, null: false
+    t.string "currency", null: false
+    t.boolean "launch", default: false
+    t.string "url", null: false
+    t.text "description"
+    t.integer "expire_day", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_courses_on_category_id"
+  end
 
   create_table "managers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +42,29 @@ ActiveRecord::Schema.define(version: 2022_04_30_075442) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_managers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_managers_on_reset_password_token", unique: true
+  end
+
+  create_table "pay_histories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.decimal "total_price", precision: 8, scale: 2, null: false
+    t.string "currency"
+    t.integer "pay_type", null: false
+    t.datetime "pay_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pay_histories_on_user_id"
+  end
+
+  create_table "user_courses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "course_id", null: false
+    t.datetime "expired_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "pay_history_id"
+    t.index ["course_id"], name: "index_user_courses_on_course_id"
+    t.index ["pay_history_id"], name: "index_user_courses_on_pay_history_id"
+    t.index ["user_id"], name: "index_user_courses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

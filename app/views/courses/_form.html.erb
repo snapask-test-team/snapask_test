@@ -1,0 +1,46 @@
+<div class="row justify-content-md-center">
+  <div class="col-4">
+    <div class="card mt-5">
+      <div class="card-body">
+        <%= simple_form_for course do |f| %>
+        
+          <div class="form-inputs text-center">
+            <%= f.input :subject, label: "subject" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :price, label: "price" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :currency, label: "currency" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :launch, label: "launch" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :url, label: "url" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :description, label: "description" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :expire_day, label: "expire_day" %>
+          </div>
+
+          <div class="form-inputs text-center">
+            <%= f.input :category_id, label: "category", collection: categories, label_method: :second, value_method: :first %>
+          </div>
+      
+            <%= f.submit class:'btn btn-success form-control', value: "Submit" %>
+        <% end %>
+      </div>
+        <div class="card-footer text-muted">
+        </div>
+    </div>
+  </div>
+</div>

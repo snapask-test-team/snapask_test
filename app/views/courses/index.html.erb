@@ -1,0 +1,42 @@
+<h1 class="text-center">Course List</h1>
+
+<%= render partial: 'search', locals: {url: "/courses", categories: @categories} %>
+<div class="text-center">
+  <%= link_to "New Course", new_course_path, class:" btn btn-success" %>
+</div>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Subject</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Currency</th>
+      <th>Launch</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Expire day</th>
+      <th class="user-table-control" scope="col"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.id %></td>
+      <td><%= course.subject %></td>
+      <td><%= course.category.name %></td>
+      <td><%= course.price %></td>
+      <td><%= course.currency %></td>
+      <td><%= course.launch %></td>
+      <td><%= course.url %></td>
+      <td><%= course.description %></td>
+      <td><%= course.expire_day %></td>
+      <td class="user-table-control">
+        <%= link_to "EDIT", edit_course_path(course), class:"btn btn-info" %>
+        <%= link_to "DELETE", course_path(course), data: {confirm: "Are you sure delete?" }, method: :delete, class:"btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
