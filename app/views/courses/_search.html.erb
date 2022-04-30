@@ -1,0 +1,6 @@
+<div class="form-inline md-form mt-4 mb-2 d-flex justify-content-center" >
+  <%= form_tag(url, method: "get") do %>
+    <%= select_tag :category_id, options_from_collection_for_select(categories, "id", "name"), class:"form-control mr-sm-2" %>
+    <%= submit_tag "SELECT", class: "btn btn-outline-success btn-rounded btn-sm my-0" %>
+  <% end %>
+</div>

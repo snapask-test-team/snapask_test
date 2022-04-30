@@ -13,6 +13,7 @@
     <ul class="nav">
       <% if current_manager %>
         <li class="nav-item"><%= link_to "Sign out", destroy_manager_session_path, method: :delete, class: "nav-link active" %></li>
+        <li class="nav-item"><%= link_to "Courst List", courses_path, class: "nav-link active" %></li>
       <% else %>
         <li class="nav-item"><%= link_to "Login", new_manager_session_path, class: "nav-link active" %></li>
       <% end %>
