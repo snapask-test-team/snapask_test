@@ -48,6 +48,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 #devise gem 
 gem "devise"
 
+#rest API gem
+gem 'grape', '~> 1.6', '>= 1.6.2'
+gem 'grape-entity', '~> 0.10.1'
+
 group :development, :test do
   gem 'pry', '0.14.1'
   gem 'pry-nav', '1.0.0'
