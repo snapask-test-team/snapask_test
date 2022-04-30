@@ -45,14 +45,12 @@ ActiveRecord::Schema.define(version: 2022_04_30_100817) do
   end
 
   create_table "pay_histories", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.decimal "total_price", precision: 8, scale: 2, null: false
     t.string "currency"
     t.integer "pay_type", null: false
     t.datetime "pay_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_pay_histories_on_user_id"
   end
 
   create_table "user_courses", force: :cascade do |t|
