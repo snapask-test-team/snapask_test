@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <ul class="nav">
+      <% if current_manager %>
+        <li class="nav-item"><%= link_to "Sign out", destroy_manager_session_path, method: :delete, class: "nav-link active" %></li>
+      <% else %>
+        <li class="nav-item"><%= link_to "Login", new_manager_session_path, class: "nav-link active" %></li>
+      <% end %>
+    </ul>
+    <% if flash[:alert] %>
+      <div class="alert alert-light text-center" role="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-light text-center" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
