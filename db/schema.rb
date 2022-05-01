@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_04_30_100817) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_100817) do
     t.integer "expire_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_courses_on_category_id"
   end
 
@@ -54,12 +57,12 @@ ActiveRecord::Schema.define(version: 2022_04_30_100817) do
   end
 
   create_table "user_courses", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "course_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
     t.datetime "expired_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pay_history_id"
+    t.bigint "pay_history_id"
     t.index ["course_id"], name: "index_user_courses_on_course_id"
     t.index ["pay_history_id"], name: "index_user_courses_on_pay_history_id"
     t.index ["user_id"], name: "index_user_courses_on_user_id"
@@ -77,4 +80,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_100817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "user_courses", "courses"
+  add_foreign_key "user_courses", "users"
 end
