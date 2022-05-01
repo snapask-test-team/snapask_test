@@ -15,12 +15,12 @@ FactoryBot.define do
   end
 
   factory :course do
-    subject { Faker::Lorem.question }
+    subject { Faker::Lorem.characters }
     price { Faker::Number.within(range: 100.0..10000.0) }
     currency { Faker::Currency.code }
     launch { Faker::Boolean.boolean }
     url { Faker::Avatar.image }
-    description { Faker::String.random }
+    description { Faker::Lorem.characters }
     expire_day { Faker::Number.within(range: 1..30) }
   end
 end
