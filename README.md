@@ -54,9 +54,22 @@
 
 # API url
 
+## heroku url: https://tranquil-hamlet-64279.herokuapp.com/
+
+```
+web課程管理後台登入帳密
+manager 測試帳密
+email: manager1@gmail.com
+password: 123456
+
+API user 測試帳密
+email: test@gmail.com
+password: 123456
+```
+
 ## 登入API
 ```ruby
-#url: http://localhost:3000/api/v1/login
+#url: https://tranquil-hamlet-64279.herokuapp.com/api/v1/login
 #method: POST
 
 request_body: {
@@ -87,7 +100,7 @@ request_body: {
 
   ## 付款API
 ```ruby
-#url: http://localhost:3000/api/v1/purchase/:course_id
+#url: https://tranquil-hamlet-64279.herokuapp.com/api/v1/purchase/:course_id
 #method: POST
 #request_headers Authorization欄位需帶上 token
 
@@ -117,7 +130,7 @@ request_body: {
 
 ## 用戶購買過的課程列表API
 ```ruby
-#url: http://localhost:3000/api/v1/account/courses
+#url: https://tranquil-hamlet-64279.herokuapp.com/api/v1/account/courses
 #method: GET
 #request_headers Authorization欄位需帶上 token
 
